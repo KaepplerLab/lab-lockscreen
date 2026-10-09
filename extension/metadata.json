@@ -1,0 +1,8 @@
+{
+  "uuid": "lab-lockscreen@local",
+  "name": "Lab Lockscreen Dashboard",
+  "description": "Clear local dashboard on the GNOME 46 lock screen. Retains GNOME authentication and clock.",
+  "shell-version": ["46"],
+  "session-modes": ["user", "unlock-dialog"],
+  "version": 1
+}

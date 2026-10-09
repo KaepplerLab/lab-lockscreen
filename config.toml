@@ -1,0 +1,71 @@
+# Lab Lockscreen 1.1.0 — Ubuntu 24.04 / GNOME Shell 46
+# Edit this file before installing. All three identity fields appear on screen.
+[identity]
+laboratory_name = "Kaeppler Laboratory"
+institution_name = "Clemson University Department of Physics and Astronomy"
+# Leave empty to use this computer's hostname automatically.
+computer_name = "Corner-Workstation (Lawrence)"
+
+[display]
+width = 1920
+height = 1080
+# Reserve the middle for GNOME's clock and password prompt.
+title = "SPACE WEATHER / AURORA"
+
+[update]
+interval_seconds = 300
+timeout_seconds = 8
+attempts = 2
+max_download_mb = 12
+
+[sources.ovation]
+enabled = true
+label = "NOAA / SWPC — NORTHERN AURORA FORECAST"
+url = "https://services.swpc.noaa.gov/images/animations/ovation/north/latest.jpg"
+stale_after_minutes = 30
+
+[sources.uaf]
+enabled = true
+label = "All-Sky Aurora Cameras"
+mode = "grid"
+# Single-camera mode only: direct current JPG/PNG, not a dated archive frame.
+# Grid mode uses page_url / image_urls instead.
+url = ""
+page_url = "https://optics.gi.alaska.edu/asc_grid.html"
+# Normally discovered from the four <img> elements in page order.
+# Optional override: exactly four direct image URLs in the desired order.
+image_urls = [
+  "https://www.irf.se/alis/allsky/krn/latest_medium.jpeg",
+  "https://www.sgo.fi/Data/RealTime/Kuvat/skyi_SOD_latest.jpg",
+  "https://api.phys.ucalgary.ca/api/v1/rt/trexrgb_yknf_standard/latest",
+  "https://api.phys.ucalgary.ca/api/v1/rt/trexrgb_fsmi_standard/latest",
+]
+# Optional four station labels; otherwise use page image alt text / filenames.
+image_labels = [
+  "Kiruna, Sweden",
+  "Sodankyla, Finland",
+  "Yellowknife, Canada",
+  "Fort Smith, Canada",
+]
+# Single-camera mode only: used for link discovery.
+match_terms = ["poker", "pkr", "rgb"]
+# Only enable for a public UAF HTTP image/page if HTTPS fails on your machine.
+# HTTPS certificate verification is never disabled.
+allow_http = false
+stale_after_minutes = 30
+
+[sources.kp]
+enabled = true
+url = "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json"
+# Kp is a three-hour index, so it needs a longer age limit than camera frames.
+stale_after_minutes = 360
+
+[sources.speed]
+enabled = true
+url = "https://services.swpc.noaa.gov/products/summary/solar-wind-speed.json"
+stale_after_minutes = 30
+
+[sources.bz]
+enabled = true
+url = "https://services.swpc.noaa.gov/products/summary/solar-wind-mag-field.json"
+stale_after_minutes = 30
